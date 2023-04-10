@@ -1,6 +1,5 @@
 package com.jecs.mytasklist.feature_task.domain.model
 
-import androidx.compose.ui.graphics.Color
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.jecs.mytasklist.ui.theme.*
@@ -11,9 +10,11 @@ data class Task(
     val content: String,
     val timestamp: Long,
     val color: Int,
-    @PrimaryKey val id: Int? = null
+    @PrimaryKey(autoGenerate = true) val id: Int = 0
 ){
     companion object {
         val taskColor = listOf(RedOrange, LightGreen, Violet, BabyBlue, RedPink)
     }
 }
+
+class InvalidTaskException(message:String): Exception(message)

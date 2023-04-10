@@ -1,4 +1,4 @@
-package com.jecs.mytasklist.feature_task.presentation
+package com.jecs.mytasklist.ui.event
 
 import com.jecs.mytasklist.feature_task.domain.model.Task
 import com.jecs.mytasklist.feature_task.domain.util.TaskOrder

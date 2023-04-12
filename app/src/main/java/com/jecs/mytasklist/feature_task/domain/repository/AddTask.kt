@@ -15,7 +15,6 @@ class AddTask(
         if(task.content.isBlank()){
             throw InvalidTaskException("The content cannot be empty.")
         }
-
         repository.insertTask(task)
     }
 }

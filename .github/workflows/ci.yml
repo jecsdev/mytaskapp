@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "ci/cd", "master" ]
   pull_request:
-    branches: [ "ci/cd", "master" ]
+    branches: [ "ci/cd", "master", "gradle_kts" ]
 
 jobs:
   build:

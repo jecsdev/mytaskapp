@@ -50,7 +50,7 @@ android {
 }
 
 dependencies {
-
+    val mockkVersion = "1.12.2"
     implementation ("androidx.core:core-ktx:1.10.0")
     implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.8.10")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
@@ -59,9 +59,15 @@ dependencies {
     implementation ("androidx.compose.ui:ui:1.4.1")
     implementation ("androidx.compose.ui:ui-tooling-preview:1.4.1")
     implementation ("androidx.compose.material:material:1.4.1")
+
+    //Test dependencies
     testImplementation ("junit:junit:4.13.2")
+    testImplementation("io.mockk:mockk:${mockkVersion}")
+
+    androidTestImplementation("io.mockk:mockk-android:${mockkVersion}")
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation ("androidx.compose.ui:ui-test-junit4:1.4.1")
+
     debugImplementation ("androidx.compose.ui:ui-tooling:1.4.1")
     debugImplementation ("androidx.compose.ui:ui-test-manifest:1.4.1")
 

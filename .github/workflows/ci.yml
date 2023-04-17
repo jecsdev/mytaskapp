@@ -2,9 +2,9 @@ name: Android Ci
 
 on:
   push:
-    branches: [ "ci/cd", "master", "gradle_kts" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "ci/cd", "master", "gradle_kts" ]
+    branches: [ "master" ]
 
 jobs:
   build:

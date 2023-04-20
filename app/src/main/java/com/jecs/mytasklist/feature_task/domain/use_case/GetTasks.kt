@@ -15,14 +15,14 @@ class GetTasks(private val repository: TaskRepository) {
                     is OrderType.Ascending -> {
                         when(taskOrder){
                             is TaskOrder.Title -> task.sortedBy { it.title.lowercase() }
-                            is TaskOrder.Date -> task.sortedBy { it.timestamp }
+                            is TaskOrder.Date -> task.sortedBy { it.date }
                             is TaskOrder.Color ->task.sortedBy { it.color }
                         }
                     }
                     is OrderType.Descending -> {
                         when(taskOrder){
                             is TaskOrder.Title -> task.sortedByDescending { it.title.lowercase() }
-                            is TaskOrder.Date -> task.sortedByDescending { it.timestamp }
+                            is TaskOrder.Date -> task.sortedByDescending { it.date }
                             is TaskOrder.Color -> task.sortedByDescending { it.color }
                         }
                     }

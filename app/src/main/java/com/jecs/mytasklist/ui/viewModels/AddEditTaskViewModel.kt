@@ -44,7 +44,7 @@ class AddEditTaskViewModel @Inject constructor(
         savedStateHandle.get<Int>("taskId")?.let{taskId ->
             if(taskId != -1){
                 viewModelScope.launch{
-                    taskUseCases.getTask(taskId)?.also {task ->
+                    taskUseCases.getTask(taskId).also {task ->
                         currentTaskId = task.id
                         _taskTitle.value = taskTitle.value.copy(
                             text = task.title,
@@ -92,7 +92,7 @@ class AddEditTaskViewModel @Inject constructor(
                             Task(
                                 title = taskTitle.value.text,
                                 content = taskContent.value.text,
-                                timestamp = System.currentTimeMillis(),
+                                date = System.currentTimeMillis(),
                                 color = taskColor.value
                             )
                         )

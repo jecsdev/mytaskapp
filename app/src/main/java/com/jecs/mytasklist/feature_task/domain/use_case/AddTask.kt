@@ -1,7 +1,8 @@
-package com.jecs.mytasklist.feature_task.domain.repository
+package com.jecs.mytasklist.feature_task.domain.use_case
 
 import com.jecs.mytasklist.feature_task.domain.model.InvalidTaskException
 import com.jecs.mytasklist.feature_task.domain.model.Task
+import com.jecs.mytasklist.feature_task.domain.repository.TaskRepository
 
 class AddTask(
     private val repository: TaskRepository

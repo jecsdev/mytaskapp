@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.jecs.mytasklist.feature_task.data.data_source.dbcontext.TaskDatabase
 import com.jecs.mytasklist.feature_task.data.repository.TaskRepositoryImplementation
-import com.jecs.mytasklist.feature_task.domain.repository.AddTask
+import com.jecs.mytasklist.feature_task.domain.use_case.AddTask
 import com.jecs.mytasklist.feature_task.domain.repository.TaskRepository
 import com.jecs.mytasklist.feature_task.domain.use_case.DeleteTask
 import com.jecs.mytasklist.feature_task.domain.use_case.GetTask

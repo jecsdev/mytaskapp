@@ -6,8 +6,12 @@ import com.jecs.mytasklist.feature_task.domain.model.Task
 import com.jecs.mytasklist.feature_task.domain.repository.TaskRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.impl.annotations.RelaxedMockK
+import junit.framework.Assert.assertEquals
+import junit.framework.Assert.assertNotNull
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import java.time.LocalDateTime
@@ -20,21 +24,26 @@ class AddTaskTest {
     private lateinit var taskRepository: TaskRepository
 
     lateinit var addTask: AddTask
+    lateinit var getTask: GetTask
+
+    private val time = LocalDateTime.now()
+    private val zoneId = ZoneId.systemDefault()
+    private val epoch = time.atZone(zoneId).toEpochSecond()
+    private val task = Task(color = Color.CYAN, title = "Example title", content = "",
+        date = epoch, id = 1
+    )
+
     @Before
     fun onBefore() {
         MockKAnnotations.init(this)
         addTask = AddTask(taskRepository)
+        getTask = GetTask(taskRepository)
     }
 
     @Test
     fun `when title task field is empty throw error message` () = runBlocking{
         //Given
-        val time = LocalDateTime.now()
-        val zoneId = ZoneId.systemDefault()
-        val epoch = time.atZone(zoneId).toEpochSecond()
-        val task = Task(color = Color.CYAN, title = "", content = "Example Content",
-            date = epoch, id = 1
-        )
+
         val exception = "The title cannot be empty."
         coEvery { taskRepository.insertTask(task) } throws InvalidTaskException(exception)
 
@@ -54,12 +63,7 @@ class AddTaskTest {
     @Test
     fun `when content task field is empty throw error message` () = runBlocking{
         //Given
-        val time = LocalDateTime.now()
-        val zoneId = ZoneId.systemDefault()
-        val epoch = time.atZone(zoneId).toEpochSecond()
-        val task = Task(color = Color.CYAN, title = "Example title", content = "",
-            date = epoch, id = 1
-        )
+
         val exception = "The content cannot be empty."
         coEvery { taskRepository.insertTask(task) } throws InvalidTaskException(exception)
 
@@ -78,6 +82,18 @@ class AddTaskTest {
 
     @Test
     fun `task insertion without exceptions`() = runBlocking {
+        //Given
+
+        coEvery {  taskRepository.insertTask(task) } returns Unit
+        //when
+        try {
+            taskRepository.insertTask(task)
+        } catch (e: Exception) {
+            throw InvalidTaskException("Error inserting message: ¨${e.message}")
+        }
+
+        //then
+        coVerify { taskRepository.insertTask(task) }
 
     }
 

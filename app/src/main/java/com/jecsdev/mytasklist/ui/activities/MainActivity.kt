@@ -10,7 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.jecsdev.mytasklist.ui.components.AddEditTaskScreen
+import com.jecsdev.mytasklist.ui.views.AddEditTaskScreen
 import com.jecsdev.mytasklist.ui.components.TaskScreen
 import com.jecsdev.mytasklist.ui.navigation.Screen
 import com.jecsdev.mytasklist.ui.theme.MyTaskListTheme
@@ -33,18 +33,21 @@ class MainActivity : ComponentActivity() {
                         composable(route = Screen.TaskScreen.route) {
                             TaskScreen(navController = navController)
                         }
-                        composable(route = Screen.AddEditTaskScreen.route + "?taskId={taskId}&taskColor={taskColor}",
+                        composable(
+                            route = Screen.AddEditTaskScreen.route + "?taskId={taskId}&taskColor={taskColor}",
                             arguments = listOf(navArgument(name = "taskId") {
                                 type = NavType.IntType
                                 defaultValue = -1
                             },
-                                navArgument (name = "taskColor"){
-                                type = NavType.IntType
-                                defaultValue = -1
-                            })){
+                                navArgument(name = "taskColor") {
+                                    type = NavType.IntType
+                                    defaultValue = -1
+                                })
+                        ) {
                             val color = it.arguments?.getInt("taskColor") ?: -1
-                            AddEditTaskScreen(navController = navController,
-                            taskColor = color
+                            AddEditTaskScreen(
+                                navController = navController,
+                                taskColor = color
                             )
                         }
                     }

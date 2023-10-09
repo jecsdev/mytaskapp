@@ -1,4 +1,4 @@
-package com.jecsdev.mytasklist.ui.components
+package com.jecsdev.mytasklist.ui.views
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.jecsdev.mytasklist.feature_task.domain.model.Task
+import com.jecsdev.mytasklist.ui.components.TransParentTextField
 import com.jecsdev.mytasklist.ui.event.AddEditTaskEvent
 import com.jecsdev.mytasklist.ui.event.UiEvent
 import com.jecsdev.mytasklist.ui.viewModels.AddEditTaskViewModel
@@ -118,11 +119,11 @@ fun AddEditTaskScreen(
             Spacer(modifier = Modifier.height(16.dp))
             TransParentTextField(text = titleState.text,
                 hint = titleState.hint,
-                onValueChange = {
-                                viewModel.onEvent(AddEditTaskEvent.EnteredTitle(it))
+                onValueChange = { value ->
+                                viewModel.onEvent(AddEditTaskEvent.EnteredTitle(value))
                 },
-                onFocusChange = {
-                    viewModel.onEvent(AddEditTaskEvent.ChangeTitleFocus(it))
+                onFocusChange = { focusState ->
+                    viewModel.onEvent(AddEditTaskEvent.ChangeTitleFocus(focusState))
                 },
                 isSingleLine = true,
                 hintVisible = titleState.isHintVisible,
@@ -131,11 +132,11 @@ fun AddEditTaskScreen(
             Spacer(modifier = Modifier.height(16.dp))
             TransParentTextField(text = contentState.text,
                 hint = contentState.hint,
-                onValueChange = {
-                    viewModel.onEvent(AddEditTaskEvent.EnteredContent(it))
+                onValueChange = {value ->
+                    viewModel.onEvent(AddEditTaskEvent.EnteredContent(value))
                 },
-                onFocusChange = {
-                    viewModel.onEvent(AddEditTaskEvent.ChangeContentFocus(it))
+                onFocusChange = { focusState ->
+                    viewModel.onEvent(AddEditTaskEvent.ChangeContentFocus(focusState))
                 },
                 isSingleLine = false    ,
                 hintVisible = contentState.isHintVisible,

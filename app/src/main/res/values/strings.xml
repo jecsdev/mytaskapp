@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">My task list</string>
+    <string name="your_task_list_description">Your task list</string>
+    <string name="my_tasks">My tasks</string>
+    <string name="sort">Sort</string>
+    <string name="task_deleted">Task deleted</string>
+    <string name="undo_uppercase">UNDO</string>
 </resources>

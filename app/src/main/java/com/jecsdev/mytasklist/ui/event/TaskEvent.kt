@@ -7,5 +7,7 @@ sealed class TaskEvent{
     data class Order(val taskOrder: TaskOrder): TaskEvent()
     data class DeleteTask(val task: Task): TaskEvent()
     object RestoreTask: TaskEvent()
+
+    object LoadTasks: TaskEvent()
     object ToggleOrderSection: TaskEvent()
 }

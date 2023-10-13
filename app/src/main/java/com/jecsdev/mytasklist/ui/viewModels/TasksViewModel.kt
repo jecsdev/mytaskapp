@@ -59,6 +59,12 @@ class TasksViewModel @Inject constructor(
                     isOrderSelectionVisible = !state.value.isOrderSelectionVisible
                 )
             }
+
+            is TaskEvent.LoadTasks -> {
+                _state.value = state.value.copy(
+                    isTaskVisible = !state.value.isTaskVisible
+                )
+            }
         }
     }
 

@@ -37,7 +37,7 @@ fun TaskItem(
     ){
         Canvas(modifier = Modifier.matchParentSize()){
             val clipPath = Path().apply {
-                lineTo(size.width - cutCornerSize.toPx(), 0f)
+                lineTo(size.width - cutCornerSize.toPx(), 0.5f)
                 lineTo(size.width, cutCornerSize.toPx())
                 lineTo(size.width,size.height)
                 lineTo(0f, size.height)
@@ -53,7 +53,7 @@ fun TaskItem(
                 drawRoundRect(color = Color(ColorUtils.blendARGB(task.color, 0x000000, 0.2f)
                 ),
                     topLeft = Offset(size.width - cutCornerSize.toPx(), -100f),
-                    size = Size(cutCornerSize.toPx() - 100f, cutCornerSize.toPx() + 100f),
+                    size = Size(cutCornerSize.toPx() + 100f, cutCornerSize.toPx() + 100f),
                     cornerRadius = CornerRadius(cornerRadius.toPx())
                 )
             }

@@ -1,12 +1,8 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
-
 plugins {
-    id ("com.android.application")
-    id ("org.jetbrains.kotlin.android")
-    id ("dagger.hilt.android.plugin")
-    id("com.google.devtools.ksp")
-    id ("kotlin-kapt")
-
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.hilt.android)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -57,46 +53,42 @@ android {
 }
 
 dependencies {
-    val mockkVersion = "1.13.7"
-    implementation ("androidx.core:core-ktx:1.12.0")
-    implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.9.10")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation ("androidx.activity:activity-compose:1.7.2")
-    implementation ("androidx.compose.ui:ui:1.5.3")
-    implementation ("androidx.compose.ui:ui-tooling-preview:1.5.3")
-    implementation ("androidx.compose.material:material:1.5.3")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.material)
 
-    //Test dependencies
-    testImplementation ("junit:junit:4.13.2")
-    testImplementation("io.mockk:mockk:${mockkVersion}")
+    // Test dependencies
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
 
-    androidTestImplementation("io.mockk:mockk-android:${mockkVersion}")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation ("androidx.compose.ui:ui-test-junit4:1.5.3")
+    androidTestImplementation(libs.mockk.android)
+    androidTestImplementation(libs.androidx.test.espresso.core)
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
 
-    debugImplementation ("androidx.compose.ui:ui-tooling:1.5.3")
-    debugImplementation ("androidx.compose.ui:ui-test-manifest:1.5.3")
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
 
     // Compose dependencies
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
-    implementation ("androidx.navigation:navigation-compose:2.7.3")
-    implementation ("androidx.compose.material:material-icons-extended:1.5.3")
-    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.compose.material.icons.extended)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     // Coroutines
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
 
-    //Dagger - Hilt
-    implementation ("com.google.dagger:hilt-android:2.43.2")
-    kapt ("com.google.dagger:hilt-android-compiler:2.43.2")
-    kapt ("androidx.hilt:hilt-compiler:1.0.0")
+    // Dagger - Hilt
+    implementation(libs.dagger.hilt.android)
+    ksp(libs.dagger.hilt.android.compiler)
 
     // Room
-    implementation ("androidx.room:room-runtime:2.5.2")
-    ksp ("androidx.room:room-compiler:2.5.2")
-
-    // Kotlin Extensions and Coroutines support for Room
-    implementation ("androidx.room:room-ktx:2.5.2")
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 }

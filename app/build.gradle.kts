@@ -3,17 +3,18 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
     namespace = "com.jecsdev.mytasklist"
-    compileSdk = 34
+    compileSdk = 35
 
 
     defaultConfig {
         applicationId = "com.jecsdev.mytasklist"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
         multiDexEnabled = true

@@ -1,19 +1,19 @@
 [versions]
-androidx-core = "1.12.0"
-kotlin = "1.9.10"
-androidx-lifecycle = "2.6.2"
-androidx-activity = "1.7.2"
-androidx-compose = "1.5.3"
+androidx-core = "1.15.0"
+kotlin = "2.0.21"
+androidx-lifecycle = "2.8.7"
+androidx-activity = "1.9.3"
+androidx-compose = "1.7.5"
 android-gradle-plugin = "8.7.2"
 junit = "4.13.2"
 mockk = "1.13.7"
-androidx-test-espresso = "3.5.1"
-androidx-navigation = "2.7.3"
-androidx-hilt = "1.0.0"
+androidx-test-espresso = "3.6.1"
+androidx-navigation = "2.8.3"
+androidx-hilt = "1.2.0"
 kotlinx-coroutines = "1.7.3"
-hilt = "2.43.2"
-androidx-room = "2.5.2"
-ksp = "1.9.10-1.0.13"
+hilt = "2.51.1"
+androidx-room = "2.6.1"
+ksp = "2.0.21-1.0.25"
 
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
@@ -39,7 +39,6 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 dagger-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 dagger-hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
-androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidx-hilt" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "androidx-room" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "androidx-room" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "androidx-room" }
@@ -50,3 +49,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

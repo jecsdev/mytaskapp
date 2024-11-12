@@ -32,12 +32,22 @@ import com.jecsdev.mytasklist.ui.viewModels.AddEditTaskViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@Composable()
+fun AddEditTaskScreenRoot(
+    navController: NavController,
+    taskColor: Int
+) {
+    AddEditTaskScreen(
+        navController = navController, taskColor = taskColor
+    )
+}
+
 @Composable
 fun AddEditTaskScreen(
     navController: NavController,
-    taskColor: Int,
-    viewModel: AddEditTaskViewModel = hiltViewModel()
+    taskColor: Int
 ) {
+    val viewModel: AddEditTaskViewModel = hiltViewModel()
     val titleState = viewModel.taskTitle.value
     val contentState = viewModel.taskContent.value
 
@@ -163,5 +173,5 @@ fun AddEditTaskScreen(
 @Composable
 private fun AddEditTaskScreenPreview() {
     val navController = rememberNavController()
-    AddEditTaskScreen(navController = navController, taskColor = 0)
+    AddEditTaskScreen(navController, 0)
 }

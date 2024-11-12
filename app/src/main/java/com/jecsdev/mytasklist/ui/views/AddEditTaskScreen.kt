@@ -1,4 +1,5 @@
 package com.jecsdev.mytasklist.ui.views
+
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -34,7 +35,7 @@ fun AddEditTaskScreen(
     navController: NavController,
     taskColor: Int,
     viewModel: AddEditTaskViewModel = hiltViewModel()
-){
+) {
     val titleState = viewModel.taskTitle.value
     val contentState = viewModel.taskContent.value
 
@@ -42,20 +43,21 @@ fun AddEditTaskScreen(
 
     val taskBackGroundAnimation = remember {
         Animatable(
-            Color(if(taskColor != 1) taskColor else viewModel.taskColor.value)
+            Color(if (taskColor != 1) taskColor else viewModel.taskColor.value)
         )
     }
     val scope = rememberCoroutineScope()
 
-    LaunchedEffect(key1 = true){
+    LaunchedEffect(key1 = true) {
         viewModel.eventFlow.collectLatest { event ->
-            when(event){
+            when (event) {
                 is UiEvent.ShowSnackBarr -> {
                     scaffoldState.snackbarHostState.showSnackbar(
                         message = event.message
                     )
                 }
-                is UiEvent.SaveTask-> {
+
+                is UiEvent.SaveTask -> {
                     navController.navigateUp()
                 }
             }
@@ -65,29 +67,35 @@ fun AddEditTaskScreen(
 
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(onClick = {
-                viewModel.onEvent(AddEditTaskEvent.SaveTask)
-            }, backgroundColor = MaterialTheme.colors.primary) {
-                Icon(imageVector = Icons.Default.Save,
+            FloatingActionButton(
+                onClick = {
+                    viewModel.onEvent(AddEditTaskEvent.SaveTask)
+                },
+                backgroundColor = MaterialTheme.colors.primary
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Save,
                     contentDescription = "Save task",
-                    tint = Color.White)
+                    tint = Color.White
+                )
             }
         },
         scaffoldState = scaffoldState
-    ) {it.calculateBottomPadding()
+    ) {
+        it.calculateTopPadding()
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(taskBackGroundAnimation.value)
-                .padding(16.dp)
+                .padding(top = 50.dp, bottom = 16.dp, start = 16.dp, end = 16.dp)
         ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
-            ){
-                Task.taskColor.forEach {color ->
+            ) {
+                Task.taskColor.forEach { color ->
                     val colors = color.toArgb()
                     Box(
                         modifier = Modifier
@@ -117,10 +125,11 @@ fun AddEditTaskScreen(
                 }
             }
             Spacer(modifier = Modifier.height(16.dp))
-            TransParentTextField(text = titleState.text,
+            TransParentTextField(
+                text = titleState.text,
                 hint = titleState.hint,
                 onValueChange = { value ->
-                                viewModel.onEvent(AddEditTaskEvent.EnteredTitle(value))
+                    viewModel.onEvent(AddEditTaskEvent.EnteredTitle(value))
                 },
                 onFocusChange = { focusState ->
                     viewModel.onEvent(AddEditTaskEvent.ChangeTitleFocus(focusState))
@@ -130,15 +139,16 @@ fun AddEditTaskScreen(
                 textStyle = MaterialTheme.typography.h5
             )
             Spacer(modifier = Modifier.height(16.dp))
-            TransParentTextField(text = contentState.text,
+            TransParentTextField(
+                text = contentState.text,
                 hint = contentState.hint,
-                onValueChange = {value ->
+                onValueChange = { value ->
                     viewModel.onEvent(AddEditTaskEvent.EnteredContent(value))
                 },
                 onFocusChange = { focusState ->
                     viewModel.onEvent(AddEditTaskEvent.ChangeContentFocus(focusState))
                 },
-                isSingleLine = false    ,
+                isSingleLine = false,
                 hintVisible = contentState.isHintVisible,
                 textStyle = MaterialTheme.typography.body1,
                 modifier = Modifier.fillMaxHeight()

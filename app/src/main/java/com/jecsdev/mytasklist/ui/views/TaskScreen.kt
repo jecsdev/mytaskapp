@@ -1,14 +1,10 @@
-package com.jecsdev.mytasklist.ui.components
+package com.jecsdev.mytasklist.ui.views
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.keyframes
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -50,6 +46,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.jecsdev.mytasklist.R
+import com.jecsdev.mytasklist.ui.components.OrderSection
+import com.jecsdev.mytasklist.ui.components.TaskItem
 import com.jecsdev.mytasklist.ui.event.TaskEvent
 import com.jecsdev.mytasklist.ui.navigation.Screen
 import com.jecsdev.mytasklist.ui.viewModels.TasksViewModel
@@ -57,7 +55,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalAnimationApi::class)
 @Composable
 fun TaskScreen(
     navController: NavController,
@@ -91,12 +88,11 @@ fun TaskScreen(
             )
         },
         scaffoldState = scaffoldState
-    ) { paddingValues ->
-        paddingValues.calculateBottomPadding()
+    ) { paddingValues -> paddingValues.calculateTopPadding()
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp)
+                .padding(top = 50.dp, bottom = 16.dp, start = 16.dp, end = 16.dp)
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),

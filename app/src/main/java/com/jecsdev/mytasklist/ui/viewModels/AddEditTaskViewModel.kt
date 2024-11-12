@@ -1,6 +1,7 @@
 package com.jecsdev.mytasklist.ui.viewModels
 
 import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.toArgb
 import androidx.lifecycle.SavedStateHandle
@@ -33,7 +34,7 @@ class AddEditTaskViewModel @Inject constructor(
     ))
     val taskContent: State<TaskTextFieldState> = _taskContent
 
-    private val _taskColor = mutableStateOf<Int>(Task.taskColor.random().toArgb())
+    private val _taskColor = mutableIntStateOf(Task.taskColor.random().toArgb())
     val taskColor: State<Int> = _taskColor
 
     private val _eventFlow = MutableSharedFlow<UiEvent>()
@@ -50,7 +51,7 @@ class AddEditTaskViewModel @Inject constructor(
                             text = task.title,
                             isHintVisible = false
                         )
-                        _taskColor.value = task.color
+                        _taskColor.intValue = task.color
                         _taskContent.value = taskContent.value.copy(
                             text = task.content,
                             isHintVisible = false
@@ -83,7 +84,7 @@ class AddEditTaskViewModel @Inject constructor(
                 )
             }
             is AddEditTaskEvent.ChangeColor -> {
-                _taskColor.value = event.color
+                _taskColor.intValue = event.color
             }
             is AddEditTaskEvent.SaveTask -> {
                 viewModelScope.launch {

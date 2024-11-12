@@ -1,6 +1,6 @@
 package com.jecsdev.mytasklist.ui.state
 
-import com.jecsdev.mytasklist.feature_task.domain.model.Task
+import com.jecsdev.mytasklist.feature_task.data.data_source.model.Task
 import com.jecsdev.mytasklist.feature_task.domain.util.OrderType
 import com.jecsdev.mytasklist.feature_task.domain.util.TaskOrder
 

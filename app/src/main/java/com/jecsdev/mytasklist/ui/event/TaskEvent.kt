@@ -1,6 +1,6 @@
 package com.jecsdev.mytasklist.ui.event
 
-import com.jecsdev.mytasklist.feature_task.domain.model.Task
+import com.jecsdev.mytasklist.feature_task.data.data_source.model.Task
 import com.jecsdev.mytasklist.feature_task.domain.util.TaskOrder
 
 sealed class TaskEvent{

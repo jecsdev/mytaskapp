@@ -19,10 +19,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.jecsdev.mytasklist.feature_task.domain.model.Task
+import androidx.navigation.compose.rememberNavController
+import com.jecsdev.mytasklist.feature_task.data.data_source.model.Task
 import com.jecsdev.mytasklist.ui.components.TransParentTextField
 import com.jecsdev.mytasklist.ui.event.AddEditTaskEvent
 import com.jecsdev.mytasklist.ui.event.UiEvent
@@ -155,4 +157,11 @@ fun AddEditTaskScreen(
             )
         }
     }
+}
+
+@Preview
+@Composable
+private fun AddEditTaskScreenPreview() {
+    val navController = rememberNavController()
+    AddEditTaskScreen(navController = navController, taskColor = 0)
 }

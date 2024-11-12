@@ -1,8 +1,8 @@
 package com.jecsdev.mytasklist.feature_task.domain.use_case
 
 import android.graphics.Color
-import com.jecsdev.mytasklist.feature_task.domain.model.InvalidTaskException
-import com.jecsdev.mytasklist.feature_task.domain.model.Task
+import com.jecsdev.mytasklist.feature_task.data.data_source.model.InvalidTaskException
+import com.jecsdev.mytasklist.feature_task.data.data_source.model.Task
 import com.jecsdev.mytasklist.feature_task.domain.repository.TaskRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery

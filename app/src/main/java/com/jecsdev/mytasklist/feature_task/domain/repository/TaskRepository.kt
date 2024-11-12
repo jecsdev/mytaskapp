@@ -1,6 +1,6 @@
 package com.jecsdev.mytasklist.feature_task.domain.repository
 
-import com.jecsdev.mytasklist.feature_task.domain.model.Task
+import com.jecsdev.mytasklist.feature_task.data.data_source.model.Task
 import kotlinx.coroutines.flow.Flow
 
 interface TaskRepository {

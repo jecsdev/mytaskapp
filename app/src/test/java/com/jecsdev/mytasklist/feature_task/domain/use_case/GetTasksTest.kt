@@ -1,7 +1,7 @@
 package com.jecsdev.mytasklist.feature_task.domain.use_case
 
 import android.graphics.Color
-import com.jecsdev.mytasklist.feature_task.domain.model.Task
+import com.jecsdev.mytasklist.feature_task.data.data_source.model.Task
 import com.jecsdev.mytasklist.feature_task.domain.repository.TaskRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -49,8 +49,10 @@ class GetTasksTest{
         val zoneId = ZoneId.systemDefault()
         val epoch = time.atZone(zoneId).toEpochSecond()
         val taskList = flow {
-            emit(listOf(Task(color = Color.BLUE, title = "Task demo", content = "This is the content",
-                date = epoch, id = 0)))
+            emit(listOf(
+                Task(color = Color.BLUE, title = "Task demo", content = "This is the content",
+                date = epoch, id = 0)
+            ))
         }
 
         coEvery { taskRepository.getTasks()} returns taskList

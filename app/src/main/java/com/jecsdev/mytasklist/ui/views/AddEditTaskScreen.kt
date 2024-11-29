@@ -19,10 +19,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.jecsdev.mytasklist.feature_task.domain.model.Task
+import androidx.navigation.compose.rememberNavController
+import com.jecsdev.mytasklist.feature_task.data.data_source.model.Task
 import com.jecsdev.mytasklist.ui.components.TransParentTextField
 import com.jecsdev.mytasklist.ui.event.AddEditTaskEvent
 import com.jecsdev.mytasklist.ui.event.UiEvent
@@ -30,12 +32,22 @@ import com.jecsdev.mytasklist.ui.viewModels.AddEditTaskViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@Composable()
+fun AddEditTaskScreenRoot(
+    navController: NavController,
+    taskColor: Int
+) {
+    AddEditTaskScreen(
+        navController = navController, taskColor = taskColor
+    )
+}
+
 @Composable
 fun AddEditTaskScreen(
     navController: NavController,
-    taskColor: Int,
-    viewModel: AddEditTaskViewModel = hiltViewModel()
+    taskColor: Int
 ) {
+    val viewModel: AddEditTaskViewModel = hiltViewModel()
     val titleState = viewModel.taskTitle.value
     val contentState = viewModel.taskContent.value
 
@@ -155,4 +167,11 @@ fun AddEditTaskScreen(
             )
         }
     }
+}
+
+@Preview
+@Composable
+private fun AddEditTaskScreenPreview() {
+    val navController = rememberNavController()
+    AddEditTaskScreen(navController, 0)
 }

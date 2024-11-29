@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.jecsdev.mytasklist.ui.views.TaskScreen
 import com.jecsdev.mytasklist.ui.views.AddEditTaskScreen
+import com.jecsdev.mytasklist.ui.views.AddEditTaskScreenRoot
 
 @Composable
 fun NavigationHost(navController: NavHostController) {
@@ -33,7 +34,7 @@ fun NavigationHost(navController: NavHostController) {
                 })
         ) {
             val color = it.arguments?.getInt("taskColor") ?: defaultColor
-            AddEditTaskScreen(
+            AddEditTaskScreenRoot(
                 navController = navController,
                 taskColor = color
             )

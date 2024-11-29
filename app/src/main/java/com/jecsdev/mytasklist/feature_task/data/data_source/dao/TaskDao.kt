@@ -1,7 +1,7 @@
-package com.jecsdev.mytasklist.feature_task.data.data_source.DAO
+package com.jecsdev.mytasklist.feature_task.data.data_source.dao
 
 import androidx.room.*
-import com.jecsdev.mytasklist.feature_task.domain.model.Task
+import com.jecsdev.mytasklist.feature_task.data.data_source.model.Task
 import kotlinx.coroutines.flow.Flow
 
 @Dao

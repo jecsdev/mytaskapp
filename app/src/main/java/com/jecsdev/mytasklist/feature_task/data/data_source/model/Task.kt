@@ -1,4 +1,4 @@
-package com.jecsdev.mytasklist.feature_task.domain.model
+package com.jecsdev.mytasklist.feature_task.data.data_source.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

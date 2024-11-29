@@ -4,8 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jecsdev.mytasklist.feature_task.domain.model.Task
-
+import com.jecsdev.mytasklist.feature_task.data.data_source.model.Task
 import com.jecsdev.mytasklist.feature_task.domain.use_case.TaskUseCases
 import com.jecsdev.mytasklist.feature_task.domain.util.OrderType
 import com.jecsdev.mytasklist.feature_task.domain.util.TaskOrder
